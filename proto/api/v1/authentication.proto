@@ -7,6 +7,16 @@ message AuthRequest {
   string name = 1;
   // unique machine_id
   string machine_id = 2;
+  // context of client
+  Context context = 3;
+}
+
+message Context {
+  optional string os = 1;
+  optional string os_version = 2;
+  optional string hardware_model = 3;
+  optional string local_ip = 4;
+  string version = 5;
 }
 
 message AuthResponse {
