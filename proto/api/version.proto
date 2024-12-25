@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package pumpkin_enterprise.api;
+
+message ApiVersionRequest {}
+
+message ApiVersion {
+    string version = 1;
+  }
+
+service ApiVersionService {
+  rpc GetApiVersion(ApiVersionRequest) returns (ApiVersion);
+}

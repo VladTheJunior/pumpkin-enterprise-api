@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package pumpkin_enterprise.api.v1;
+
+message AuthRequest {
+  // name of client
+  string name = 1;
+  // unique machine_id
+  string machine_id = 2;
+}
+
+message AuthResponse {
+  // status of authentication,
+  // null = not authenticated,
+  // true = authenticated,
+  // false = banned
+  optional bool status = 1;
+}
+
+message ApproveAuthenticationRequest {
+  string name = 1;
+  string password = 2;
+  string machine_id = 3;
+  // status of authentication,
+  // null = not authenticated,
+  // true = authenticated,
+  // false = banned
+  optional bool status = 4;
+}
+
+message ApproveAuthenticationResponse {}
+
+service AuthenticationService {
+  // Method to authenticate machine for readonly privileged methods
+  rpc Authenticate(AuthRequest) returns (AuthResponse);
+  // Method to set password
+  rpc ApproveAuthentication(ApproveAuthenticationRequest)
+      returns (ApproveAuthenticationResponse);
+}
