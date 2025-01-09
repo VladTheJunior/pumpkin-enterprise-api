@@ -9,12 +9,11 @@ message GetDataResponse {
 message SetDataResponse {
   int64 updated_at = 1;
   int32 data_len = 2;
-  int64 download_counter = 3;
 }
 message SetDataRequest {
   bytes data = 1;
 }
-message GetDataRequest { RequestType request = 1; }
+message GetDataRequest { repeated RequestType request = 1; }
 message GetLogsRequest { }
 
 enum RequestType {
