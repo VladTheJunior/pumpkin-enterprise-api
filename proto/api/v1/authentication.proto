@@ -22,10 +22,10 @@ enum PermissionMode {
 }
 
 message Context {
-  optional string os = 1;
-  optional string os_version = 2;
-  optional string hostname = 3;
-  optional string local_ip = 4;
+  string os = 1;
+  string os_version = 2;
+  string hostname = 3;
+  string local_ip = 4;
   string version = 5;
 }
 
