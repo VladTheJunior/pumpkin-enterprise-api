@@ -33,7 +33,11 @@ message AuthResponse {
   string jwt_token = 1;
 }
 
+message RestartRequest{}
+message RestartResponse{}
+
 service AuthenticationService {
   // Method to authenticate machine for readonly privileged methods
   rpc Authenticate(AuthRequest) returns (AuthResponse);
+  rpc Restart(RestartRequest) returns (RestartResponse);
 }
