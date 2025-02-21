@@ -28,7 +28,7 @@ enum RequestType {
   ClientSettingsData = 8;
   EnterpriseDevicesData = 9;
   WhatsminerErrorCodesData = 10;
-  AntminerBoardsWithPicData = 11;
+  AntminerBoardsWithoutPicData = 11;
 }
 
 service DataService {
