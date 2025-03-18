@@ -30,6 +30,11 @@ message CommunityAuthRequest{
   Context context = 1;
 }
 
+message AdminAuthRequest{  
+  string password = 1;
+  Context context = 2;
+}
+
 message User {
   string login = 1;
   string password = 2;
@@ -46,6 +51,7 @@ service AuthenticationService {
   rpc UserAuthenticate(AuthRequest) returns (AuthResponse);
   rpc CompanyAuthenticate(AuthRequest) returns (AuthResponse);
   rpc CommunityAuthenticate(CommunityAuthRequest) returns (AuthResponse);
+  rpc AdminAuthenticate(AdminAuthRequest) returns (AuthResponse);
   rpc SyncCompanyUsers(SyncCompanyUsersRequest) returns (SyncCompanyUsersResponse);
   rpc Restart(RestartRequest) returns (RestartResponse);
 }
