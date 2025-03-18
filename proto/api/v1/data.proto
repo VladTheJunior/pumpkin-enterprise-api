@@ -6,17 +6,30 @@ message GetDataResponse {
   bytes data = 1;
 }
 
-message SetDataResponse {
-  int64 updated_at = 1;
-  int32 data_len = 2;
+message SetCompanyDataResponse {
+
 }
-message SetDataRequest {
+message SetCompanyDataRequest {
   bytes data = 1;
 }
-message GetDataRequest { repeated RequestType request = 1; }
+
+message SetCommonDataResponse {
+
+}
+message SetCommonDataRequest {
+  bytes data = 1;
+}
+
+message GetDataRequest { }
 message GetLogsRequest { }
 
-enum RequestType {
+enum CompanyDataName {
+  MapsData = 0;
+  ClientSettingsData = 1;
+  DevicesData = 2;
+}
+
+enum CommonDataName {
   AppVersion = 0;
   AlgoConfigData = 1;
   ChipTempsConfigData = 2;
@@ -24,15 +37,13 @@ enum RequestType {
   ModesConfigData = 4;
   AntminerIdealConfigData = 5;
   AntminerPowerConfigData = 6;
-  MapsData = 7;
-  ClientSettingsData = 8;
-  EnterpriseDevicesData = 9;
-  WhatsminerErrorCodesData = 10;
-  AntminerBoardsWithoutPicData = 11;
+  WhatsminerErrorCodesData = 7;
+  AntminerBoardsWithoutPicData = 8;
 }
 
 service DataService {
   rpc GetLogs(GetLogsRequest) returns (stream GetDataResponse);
   rpc GetData(GetDataRequest) returns (stream GetDataResponse);
-  rpc SetData(stream SetDataRequest) returns (SetDataResponse);
+  rpc SetCompanyData(stream SetCompanyDataRequest) returns (SetCompanyDataResponse);
+  rpc SetCommonData(stream SetCommonDataRequest) returns (SetCommonDataResponse);
 }

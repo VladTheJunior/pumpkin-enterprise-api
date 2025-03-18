@@ -4,21 +4,10 @@ package pumpkin_enterprise.api.v1;
 
 
 message AuthRequest {
-  // name of client
-  string name = 1;
-  // password of client
+  string login = 1;
   string password = 2;
-  // request type
-  PermissionMode mode = 3;
-  // context of client
+  string machine_id = 3;
   Context context = 4;
-}
-
-enum PermissionMode {
-  // read only
-  READ_ONLY = 0;
-  // super user
-  SUPER = 1;
 }
 
 message Context {
@@ -31,13 +20,34 @@ message Context {
 
 message AuthResponse {
   string jwt_token = 1;
+  optional string user_name = 2;
+  optional string company_name = 3;
 }
 
 message RestartRequest{}
 message RestartResponse{}
 
+message CommunityAuthRequest{  
+  string machine_id = 1;
+  Context context = 2;
+}
+
+message User {
+  string login = 1;
+  string password = 2;
+  string name = 3;
+}
+
+message SyncCompanyUsersRequest{
+  repeated User users = 1;
+}
+message SyncCompanyUsersResponse{}
+
 service AuthenticationService {
   // Method to authenticate machine for readonly privileged methods
-  rpc Authenticate(AuthRequest) returns (AuthResponse);
+  rpc UserAuthenticate(AuthRequest) returns (AuthResponse);
+  rpc CompanyAuthenticate(AuthRequest) returns (AuthResponse);
+  rpc CommunityAuthenticate(CommunityAuthRequest) returns (AuthResponse);
+  rpc SyncCompanyUsers(SyncCompanyUsersRequest) returns (SyncCompanyUsersResponse);
   rpc Restart(RestartRequest) returns (RestartResponse);
 }
