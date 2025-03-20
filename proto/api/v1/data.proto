@@ -22,7 +22,7 @@ message SetCommonDataRequest {
 
 message GetDataRequest { }
 message GetLogsRequest { }
-
+message GetAppRequest { }
 enum CompanyDataName {
   MapsData = 0;
   ClientSettingsData = 1;
@@ -42,6 +42,7 @@ enum CommonDataName {
 }
 
 service DataService {
+  rpc GetApp(GetAppRequest) returns (stream GetDataResponse);
   rpc GetLogs(GetLogsRequest) returns (stream GetDataResponse);
   rpc GetData(GetDataRequest) returns (stream GetDataResponse);
   rpc SetCompanyData(stream SetCompanyDataRequest) returns (SetCompanyDataResponse);
