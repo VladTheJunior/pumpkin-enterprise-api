@@ -50,7 +50,7 @@ enum CommonDataName {
 }
 
 service DataService {
-  rpc AddApp(stream AddAppRequest) returns (stream AddAppResponse);
+  rpc AddApp(stream AddAppRequest) returns (AddAppResponse);
   rpc GetApp(GetAppRequest) returns (stream GetDataResponse);
   rpc GetLogs(GetLogsRequest) returns (stream GetDataResponse);
   rpc GetData(GetDataRequest) returns (stream GetDataResponse);
