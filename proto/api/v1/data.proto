@@ -16,9 +16,17 @@ message SetCompanyDataRequest {
 message SetCommonDataResponse {
 
 }
+message AddAppResponse {
+
+}
 message SetCommonDataRequest {
   bytes data = 1;
 }
+
+message AddAppRequest {
+  bytes data = 1;
+}
+
 
 message GetDataRequest { }
 message GetLogsRequest { }
@@ -42,6 +50,7 @@ enum CommonDataName {
 }
 
 service DataService {
+  rpc AddApp(stream AddAppRequest) returns (stream AddAppResponse);
   rpc GetApp(GetAppRequest) returns (stream GetDataResponse);
   rpc GetLogs(GetLogsRequest) returns (stream GetDataResponse);
   rpc GetData(GetDataRequest) returns (stream GetDataResponse);
