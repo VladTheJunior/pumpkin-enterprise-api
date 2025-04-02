@@ -7,10 +7,6 @@ message AuthRequest {
   string login = 1;
   string password = 2;
   Context context = 3;
-  optional string os = 4;
-  optional string hostname = 5;
-  optional string local_ip = 6;
-  string version = 7;
 }
 
 message Context {
@@ -31,20 +27,12 @@ message RestartRequest{}
 message RestartResponse{}
 
 message CommunityAuthRequest{  
-  Context context = 1;
-  optional string os = 2;
-  optional string hostname = 3;
-  optional string local_ip = 4;
-  string version = 5;    
+  Context context = 1;   
 }
 
 message AdminAuthRequest{  
   string password = 1;
   Context context = 2;
-  optional string os = 3;
-  optional string hostname = 4;
-  optional string local_ip = 5;
-  string version = 6;
 }
 
 message User {
@@ -60,7 +48,8 @@ message SyncCompanyUsersResponse{}
 
 
 message LogEventRequest{
-  bytes event = 1; 
+  string event = 1;
+  bytes data = 2; 
 }
 message LogEventResponse{}
 
