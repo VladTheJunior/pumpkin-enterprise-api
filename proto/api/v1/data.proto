@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package pumpkin_enterprise.api.v1;
-
+import "api/v1/authentication.proto";
 message GetDataResponse {
   bytes data = 1;
 }
@@ -30,7 +30,7 @@ message AddAppRequest {
 
 message GetDataRequest { }
 message GetLogsRequest { }
-message GetAppRequest { }
+message GetAppRequest {  pumpkin_enterprise.api.v1.Context context = 1;    }
 enum CompanyDataName {
   MapsData = 0;
   ClientSettingsData = 1;
