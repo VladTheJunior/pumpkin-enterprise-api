@@ -47,6 +47,13 @@ message SyncCompanyUsersRequest{
 message SyncCompanyUsersResponse{}
 
 
+message UpdateRestrictedAppVersionRequest{
+  string version = 1;
+  bool restricted = 2;
+}
+message UpdateRestrictedAppVersionResponse{}
+
+
 message LogEventRequest{
   string event = 1;
   bytes data = 2; 
@@ -61,4 +68,5 @@ service AuthenticationService {
   rpc SyncCompanyUsers(SyncCompanyUsersRequest) returns (SyncCompanyUsersResponse);
   rpc Restart(RestartRequest) returns (RestartResponse);
   rpc LogEvent(LogEventRequest) returns (LogEventResponse);
+  rpc UpdateRestrictedAppVersion(UpdateRestrictedAppVersionRequest) returns (UpdateRestrictedAppVersionResponse);
 }
