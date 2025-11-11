@@ -42,6 +42,7 @@ enum CompanyDataName {
   MapsData = 0;
   ClientSettingsData = 1;
   DevicesData = 2;
+  MapsDataV2 = 3;
 }
 
 enum CommonDataName {
